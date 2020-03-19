@@ -12,7 +12,7 @@
         <label for="exampleInputEmail1">Продукти</label>
         <input type="text" class="form-control" id="products" name="products">
     </div>
-    <button type="submit" class="btn btn-primary">Изпрати</button>
+    <button type="submit" class="btn btn-primary" id="submit">Изпрати</button>
 </form></p>
 
 

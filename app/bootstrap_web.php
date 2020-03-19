@@ -5,9 +5,13 @@ use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Application;
 
 error_reporting(E_ALL);
+if(!defined('BASE_PATH')){
+    define('BASE_PATH', dirname(__DIR__));
+}
 
-define('BASE_PATH', dirname(__DIR__));
-define('APP_PATH', BASE_PATH . '/app');
+if(!defined('APP_PATH')) {
+    define('APP_PATH', BASE_PATH . '/app');
+}
 
 try {
     /**

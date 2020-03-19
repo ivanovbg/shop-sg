@@ -9,5 +9,8 @@ modules:
     enabled:
         - PhpBrowser:
             url: http://localhost
+            allow_redirects: true
+            curl:
+                CURLOPT_RETURNTRANSFER: true
         - \Helper\Acceptance
     step_decorators: ~        

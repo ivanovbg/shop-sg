@@ -23,4 +23,9 @@ class FunctionalTester extends \Codeception\Actor
    /**
     * Define custom actions here
     */
+
+    public function getCurrentUrl() {
+        return $_SERVER['REQUEST_URI'];
+    }
+
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace SG\Modules\Frontend\Controllers;
 
+use Phalcon\Http\Response;
 use SG\Models\Order;
 use SG\Models\OrderProducts;
 use SG\Models\Product;
@@ -32,9 +33,9 @@ class IndexController extends ControllerBase{
                     $order['products'][] = array_merge(['product_id' => $productData->id], $this->orders->calculateProductOrder($productData, $items, $promotion));
                 }
 
+
                 if(empty($order)){
                 	$this->flash->error('Съжаляваме, но няма съвпадение на продукти');
-                	return $this->response->redirect('/');
                 }
 
                 $order['total'] = $this->orders->calculateOrderTotal($order['products']);
@@ -51,7 +52,9 @@ class IndexController extends ControllerBase{
                     }
                 }
 
-                $this->response->redirect('/order/'.$orderEntry->id);
+                $response = new Response();
+                $response->redirect("/order/".$orderEntry->id);
+                return $response->send();
             }
         }
     }
@@ -59,7 +62,6 @@ class IndexController extends ControllerBase{
     public function orderAction($id){
         $order = Order::findFirst($id);
         if(!$order) $this->response->redirect("/");
-
         $this->view->order = $order;
     }
 }

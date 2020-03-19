@@ -1,2 +1,4 @@
 <?php
-define("TEST", true);
+if(!defined("TEST")) {
+    define("TEST", true);
+}

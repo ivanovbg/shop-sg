@@ -6,5 +6,8 @@ namespace Helper;
 
 class Functional extends \Codeception\Module
 {
-
+    public function getCurrentUrl()
+    {
+        return $this->getModule('WebDriver')->_getCurrentUri();
+    }
 }
