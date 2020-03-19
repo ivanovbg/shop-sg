@@ -60,6 +60,8 @@ try {
      */
     require APP_PATH . '/config/routes.php';
 
+    if(defined("TEST")) return $application;
+
     echo $application->handle($_SERVER['REQUEST_URI'])->getContent();
 } catch (\Exception $e) {
     echo $e->getMessage() . '<br>';

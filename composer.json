@@ -9,5 +9,15 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {"php": ">=7.2.0"}
+    "require": {
+        "php": ">=7.2.0"
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-phalcon": "^1.0",
+        "codeception/module-db": "^1.0",
+        "codeception/module-phalcon4": "^1.0"
+    }
 }
