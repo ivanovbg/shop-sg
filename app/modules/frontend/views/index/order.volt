@@ -1,7 +1,7 @@
 {% extends '/layouts/default.volt' %}
 
 {% block content %}
-    
+
     <div class="page-header" style="padding-top: 150px;">
         <h1>Поръчка #{{ order.id }}</h1>
     </div>

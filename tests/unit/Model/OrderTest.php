@@ -1,18 +1,17 @@
 <?php
-
 namespace App\Test\Unit\Models;
 
+use SG\Models\Order;
 use UnitTester;
 use Codeception\Test\Unit;
-use SG\Models\Admin;
 
-class UsersTest extends Unit
+class OrderTest extends Unit
 {
     /**
      * The Users model.
-     * @var Admin
+     * @var Order
      */
-    protected $user;
+    protected $admin;
 
     /**
      * UnitTester Object
@@ -21,11 +20,11 @@ class UsersTest extends Unit
     protected $tester;
 
     protected function _before(){
-        $this->user = new Admin();
+        $this->order = new Order();
     }
 
     public function testGetSource()
     {
-        $this->assertEquals($this->user->getSource(), 'admins');
+        $this->assertEquals($this->order->getSource(), 'orders');
     }
 }

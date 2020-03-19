@@ -50,11 +50,13 @@ class IndexController extends ControllerBase{
                         $orderProduct->assign($product);
                         $orderProduct->save();
                     }
+
+                    $response = new Response();
+                    $response->redirect("/order/".$orderEntry->id);
+                    return $response->send();
                 }
 
-                $response = new Response();
-                $response->redirect("/order/".$orderEntry->id);
-                return $response->send();
+                $this->flash->error('Упсс нещо се обърка! Моля, опитайте отново.');
             }
         }
     }
