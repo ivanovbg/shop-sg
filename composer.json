@@ -1,0 +1,13 @@
+{
+    "name": "softmotion/sg-shop",
+    "description": "Simple shop",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Krasimir Petrov",
+            "email": "ivanovkbg@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {"php": ">=7.2.0"}
+}
