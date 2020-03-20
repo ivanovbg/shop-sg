@@ -12,12 +12,12 @@
         <form class="admin-login-form" method="post">
             <div class="form-group has-feedback">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                <input type="email" name="email" class="form-control" placeholder="{{ locale.t('email')}}" data-msg-required="{{ locale.t('required_filed')}}" data-msg-email="{{ locale.t("invalid_email") }}">
+                <input type="email" name="email" class="form-control" placeholder="{{ locale.t('email')}}" data-msg-required="{{ locale.t('required_field')}}" data-msg-email="{{ locale.t("invalid_email") }}">
 
             </div>
             <div class="form-group has-feedback">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <input type="password" name="password" class="form-control"  placeholder="{{ locale.t('password')}}" data-msg-required="{{ locale.t('required_filed')}}" data-msg-minlength="{{ locale.t("password_to_short") }}">
+                <input type="password" name="password" class="form-control"  placeholder="{{ locale.t('password')}}" data-msg-required="{{ locale.t('required_field')}}" data-msg-minlength="{{ locale.t("password_to_short") }}">
 
             </div>
             <div class="row">
