@@ -1,5 +1,6 @@
 <?php
-namespace unit\Form;
+namespace App\Test\Unit\Form;
+
 use Codeception\Test\Unit;
 use SG\Modules\Backend\Module;
 

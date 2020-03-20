@@ -1,9 +1,7 @@
 <?php
-namespace unit\Form;
+namespace App\Test\Unit\Form;
 
-use Codeception\Test\Unit;
 use SG\Modules\Backend\Forms\ProductForm;
-use SG\Modules\Backend\Module;
 
 class ProductFormTest extends FormTest{
 

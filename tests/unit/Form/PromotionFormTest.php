@@ -1,7 +1,7 @@
 <?php
-namespace unit\Form;
+namespace App\Test\Unit\Form;
 
-use Codeception\Test\Unit;
+
 use SG\Models\Product;
 use SG\Modules\Backend\Forms\PromotionForm;
 
@@ -28,8 +28,8 @@ class PromotionFormTest extends FormTest{
             $this->data['product_id'] = $product->id;
             $this->data['products'] = 12;
             $this->data['price'] = 120;
-            $this->data['valid_from'] = new \DateTime();
-            $this->data['valid_to'] = new \DateTime();
+            $this->data['valid_from'] = (new \DateTime())->format('Y-m-d');
+            $this->data['valid_to'] =  (new \DateTime())->format('Y-m-d');
             $this->data['is_active'] = 1;
             $this->assertTrue($this->form->isValid($this->data));
         }
