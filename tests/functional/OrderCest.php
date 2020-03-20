@@ -1,13 +1,8 @@
 <?php
 
-class OrderCest
-{
-    public function _before(AcceptanceTester $I)
-    {
-    }
+class OrderCest{
 
-
-    public function submitWrongOrder(AcceptanceTester $I){
+    public function submitWrongOrder(FunctionalTester $I){
         $I->wantTo('submit wrong order');
         $I->amOnPage('/');
         $I->see('SG - Online shop');
@@ -16,16 +11,16 @@ class OrderCest
         $I->seeElement(['xpath'=>'//div[contains(@class, "alert-danger")]']);
     }
 
-
-    public function submitOrder(AcceptanceTester $I){
+    public function submitOrder(FunctionalTester $I){
         $I->wantTo('submit order');
         $I->amOnPage('/');
         $I->see('SG - Online shop');
         $I->fillField('products', 'AAA');
         $I->click('#submit');
         $I->canSeeCurrentUrlMatches('/order/');
-        $I->see("Поръчка");
-        $I->see('Общо: 130.00лв.');
-        $I->dontSeeElement(['xpath'=>'//div[contains(@class, "alert-danger")]']);
+        $url = $I->getCurrentUrl();
+        $I->seeInCurrentUrl($url);
+        $I->amOnPage($url);
     }
+
 }
