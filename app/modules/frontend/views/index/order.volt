@@ -3,16 +3,16 @@
 {% block content %}
 
     <div class="page-header" style="padding-top: 150px;">
-        <h1>Поръчка #{{ order.id }}</h1>
+        <h1>{{locale.t('order')}} #{{ order.id }}</h1>
     </div>
 
 
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Продукт</th>
-            <th>Редовни</th>
-            <th>Промоционални</th>
+            <th>{{locale.t('product')}}</th>
+            <th>{{locale.t('regular')}}</th>
+            <th>{{locale.t('in_promotion')}}</th>
         </tr>
         </thead>
         {% for product in order.products %}
@@ -38,49 +38,25 @@
                     {% for row in 1..rows %}
                         {% if row == 1 %}
                             <td>
-                                {{ product.promotion_products }} продукта на цена от  {{ product.promotion_price|price }}
+                                {{ product.promotion_products }} {{ locale.t('products_on_price') }} {{ product.promotion_price|price }}
                             </td>
                         </tr>
                         {% else %}
                             <tr>
                             <td>
-                                {{ product.promotion_products }} продукта на цена от {{ product.promotion_price|price }}
+                                {{ product.promotion_products }} {{ locale.t('products_on_price') }} {{ product.promotion_price|price }}
                             </td>
                             </tr>
                         {% endif %}
 
                     {% endfor %}
                 {% endif %}
-
-
-
-                    {#                <tr>#}
-            {#                    <td>{{ product.product.title }}</td>#}
-            {#                    <td>{% if product.products_with_promotion %}#}
-            {#                            {% set rows = product.products_with_promotion/product.promotion_products %}#}
-            {#                            {% for row in 1..rows %}#}
-            {#                                {{ product.promotion_products }} = {{ product.promotion_price|price }}<br />#}
-            {#                            {% endfor %}#}
-
-            {#                            Общо: {{ (rows*product.promotion_price)|price }}#}
-            {#                        {% else %}#}
-            {#                            ----#}
-            {#                        {% endif %}#}
-            {#                    </td>#}
-            {#                    <td>{% if product.products_without_promotion %}#}
-            {#                            {{ product.products_without_promotion }}X{{ product.product_regular_price|price }} = {{ (product.products_without_promotion*product.product_regular_price)|price }}#}
-            {#                        {% else %}#}
-            {#                            ---#}
-            {#                        {% endif %}#}
-
-            {#                    </td>#}
-            {#                </tr>#}
         {% endfor %}
 
 
         <tr>
             <td colspan="2">----</td>
-            <td>Общо: {{ order.total_price|price }}</td>
+            <td>{{ locale.t('total') }}: {{ order.total_price|price }}</td>
         </tr>
 
         </tbody>

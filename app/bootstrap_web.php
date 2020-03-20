@@ -64,6 +64,7 @@ try {
      */
     require APP_PATH . '/config/routes.php';
 
+    ##for tests
     if(defined("TEST")) return $application;
 
     echo $application->handle($_SERVER['REQUEST_URI'])->getContent();

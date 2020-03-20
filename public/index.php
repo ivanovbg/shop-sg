@@ -5,6 +5,7 @@ if(!defined("LOCALPATH")) {
 
 $application = require LOCALPATH.'app/bootstrap_web.php';
 
+##for tests
 if(defined("TEST")){
     return $application;
 }

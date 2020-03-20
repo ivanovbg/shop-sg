@@ -15,6 +15,7 @@ $msg['add_btn'] = 'Добави';
 $msg['delete_btn'] = 'Изтрий';
 $msg['edit_btn'] = 'Редактирай';
 $msg['view_btn'] = 'Преглед';
+$msg['send_btn'] = 'Изпрати';
 
 
 $msg['sign_in'] = 'Вход';
@@ -32,7 +33,9 @@ $msg['no_access_to_this_page'] = 'Нямате достъп до тази стр
 
 
 $msg['products'] = 'Продукти';
+$msg['product'] = 'Продукт';
 $msg['orders'] = 'Поръчки';
+$msg['order'] = 'Поръчка';
 $msg['promotions'] = 'Промоции';
 $msg['success_delete_promotion'] = 'Успешно изтрихте промоцията';
 $msg['success_update_promotion'] = 'Успешно обновихте промоцията';
@@ -41,6 +44,9 @@ $msg['success_update_product'] = 'Успешно обновихте продук
 $msg['success_add_product'] = 'Успешно добавихте продукт';
 $msg['success_delete_product'] = 'Успешно изтрихте продукта';
 $msg['success_delete_order'] = 'Успешно изтрихте поръчката';
+$msg['regular'] = 'На регулярна цена';
+$msg['in_promotion'] = 'На промоционална цена';
+$msg['products_on_price'] = 'продукта на цена от';
 
 
 
@@ -52,7 +58,7 @@ $msg['title'] = 'Заглавие';
 $msg['sku'] = 'SKU';
 $msg['price'] = 'Цена';
 $msg['options'] = 'Опции';
-$msg['product'] = 'Продукт';
+$msg['total'] = 'Общо';
 
 
 
@@ -63,6 +69,8 @@ $msg['edit_promotion'] = 'Редактиране на промоция';
 $msg['products_number'] = 'Брой продукти';
 $msg['single_price'] = 'Единична цена';
 $msg['please_select'] = 'Изберете';
+
+
 
 $msg['date'] = 'Дата';
 $msg['view'] = 'Преглед';
