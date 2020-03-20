@@ -2,7 +2,9 @@
 
 namespace App\Test\Unit\Models;
 
+use Phalcon\Loader;
 use SG\Models\Product;
+use SG\Modules\Backend\Forms\ProductForm;
 use UnitTester;
 use Codeception\Test\Unit;
 
@@ -27,5 +29,9 @@ class ProductTest extends Unit
     public function testGetSource()
     {
         $this->assertEquals($this->product->getSource(), 'products');
+    }
+
+    public function testValidation(){
+        $this->assertFalse($this->product->save());
     }
 }

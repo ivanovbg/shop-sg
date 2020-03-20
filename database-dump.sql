@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table sg.admins: ~1 rows (approximately)
+-- Dumping data for table sg.admins: ~2 rows (approximately)
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
 INSERT INTO `admins` (`id`, `email`, `password`, `active`, `name`, `level`) VALUES
 	(1, 'ivanovkbg@gmail.com', '6dcdc372c748e4dc90e0c8d653e387bc', 1, 'Красимир Петров', 9),
@@ -37,27 +37,13 @@ INSERT INTO `admins` (`id`, `email`, `password`, `active`, `name`, `level`) VALU
 -- Dumping structure for table sg.orders
 CREATE TABLE IF NOT EXISTS `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `total_price` float NOT NULL DEFAULT 0,
+  `total_price` float NOT NULL,
   `date_created` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table sg.orders: ~13 rows (approximately)
+-- Dumping data for table sg.orders: ~94 rows (approximately)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` (`id`, `total_price`, `date_created`) VALUES
-	(1, 150, '2020-03-18 15:55:04'),
-	(2, 100, '2020-03-18 15:55:55'),
-	(3, 185, '2020-03-18 16:22:09'),
-	(4, 0, '2020-03-18 16:25:41'),
-	(5, 185, '2020-03-18 16:26:47'),
-	(6, 185, '2020-03-18 16:27:08'),
-	(7, 185, '2020-03-18 16:27:29'),
-	(8, 185, '2020-03-18 16:27:54'),
-	(9, 185, '2020-03-18 16:29:15'),
-	(10, 185, '2020-03-18 16:38:16'),
-	(11, 380, '2020-03-18 17:50:26'),
-	(12, 285, '2020-03-18 18:15:55'),
-	(13, 185, '2020-03-18 18:21:01');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
 -- Dumping structure for table sg.orders_products
@@ -78,28 +64,10 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   CONSTRAINT `FK_orders_products_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_orders_products_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_orders_products_promotions` FOREIGN KEY (`promotion_id`) REFERENCES `promotions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table sg.orders_products: ~17 rows (approximately)
+-- Dumping data for table sg.orders_products: ~0 rows (approximately)
 /*!40000 ALTER TABLE `orders_products` DISABLE KEYS */;
-INSERT INTO `orders_products` (`id`, `order_id`, `product_id`, `promotion_id`, `promotion_products`, `promotion_price`, `products_with_promotion`, `products_without_promotion`, `product_regular_price`) VALUES
-	(1, 9, 11, NULL, 0, 0, 0, 1, 10),
-	(2, 9, 8, 12, 3, 130, 3, 0, 0),
-	(3, 9, 9, 13, 2, 45, 2, 0, 0),
-	(4, 10, 11, NULL, 0, 0, 0, 1, 10),
-	(5, 10, 8, 12, 3, 130, 3, 0, 0),
-	(6, 10, 9, 13, 2, 45, 2, 0, 0),
-	(7, 11, 8, 12, 3, 130, 6, 0, 0),
-	(8, 11, 9, 13, 2, 45, 4, 0, 0),
-	(9, 11, 10, NULL, 0, 0, 0, 1, 20),
-	(10, 11, 11, NULL, 0, 0, 0, 1, 10),
-	(11, 12, 8, 12, 3, 130, 3, 1, 50),
-	(12, 12, 9, 13, 2, 45, 2, 1, 30),
-	(13, 12, 10, NULL, 0, 0, 0, 1, 20),
-	(14, 12, 11, NULL, 0, 0, 0, 1, 10),
-	(15, 13, 11, NULL, 0, 0, 0, 1, 10),
-	(16, 13, 8, 12, 3, 130, 3, 0, 0),
-	(17, 13, 9, 13, 2, 45, 2, 0, 0);
 /*!40000 ALTER TABLE `orders_products` ENABLE KEYS */;
 
 -- Dumping structure for table sg.products

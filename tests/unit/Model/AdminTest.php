@@ -28,4 +28,8 @@ class AdminTest extends Unit
     {
         $this->assertEquals($this->admin->getSource(), 'admins');
     }
+
+    public function testValidation(){
+        $this->assertFalse($this->admin->save());
+    }
 }

@@ -27,4 +27,8 @@ class OrderTest extends Unit
     {
         $this->assertEquals($this->order->getSource(), 'orders');
     }
+
+    public function testValidation(){
+        $this->assertFalse($this->order->save());
+    }
 }

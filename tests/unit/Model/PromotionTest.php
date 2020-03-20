@@ -29,4 +29,8 @@ class PromotionTest extends Unit
     {
         $this->assertEquals($this->promotion->getSource(), 'promotions');
     }
+
+    public function testValidation(){
+        $this->assertFalse($this->promotion->save());
+    }
 }
