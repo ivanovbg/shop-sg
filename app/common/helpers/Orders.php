@@ -1,6 +1,11 @@
 <?php
 namespace SG\Helpers;
 
+use SG\Models\Order;
+use SG\Models\OrderProducts;
+use SG\Models\Product;
+use SG\Models\Promotion;
+
 class Orders{
     private static $instance = false;
 
@@ -33,6 +38,43 @@ class Orders{
         }
 
         return $products_final;
+    }
+
+
+    public function prepareOrder($products){
+        $order = [];
+        if(empty($products)) return $order;
+        foreach($products as $product => $items){
+            $productData = Product::getProductBySku($product, null, 1);
+
+            if(!$productData){
+                continue;
+            }
+
+            $promotion = Promotion::findOneActualProductPromotion($productData->id);
+            $order['products'][] = array_merge(['product_id' => $productData->id], $this->calculateProductOrder($productData, $items, $promotion));
+        }
+        return $order;
+    }
+
+    public function saveOrder($order){
+        $order['total'] = $this->calculateOrderTotal($order['products']);
+
+        $orderEntry = new Order();
+        $orderEntry->total_price = $order['total'];
+        $is_ok = false;
+
+        if($orderEntry->save()){
+            foreach($order['products'] as $key => $product){
+                $product['order_id'] = $orderEntry->id;
+                $orderProduct = new OrderProducts();
+                $orderProduct->assign($product);
+                $orderProduct->save();
+            }
+            $is_ok = $orderEntry->id;
+        }
+
+        return $is_ok;
     }
 
 

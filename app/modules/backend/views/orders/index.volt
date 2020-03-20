@@ -2,6 +2,7 @@
 {% block content %}
     <div class="row">
         <div class="col-xs-12">
+            {{flash.output() }}
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{ pageTitle }}</h3>
@@ -24,8 +25,8 @@
                                 <td>{{ order.date_created }}</td>
                                 <td>{{ order.total_price|price }}</td>
                                 <td>
-                                    <a href="/order/{{ order.id }}" target="_blank" class="btn btn-primary btn-xs">{{locale.t('view')}}</a>
-
+                                    <a href="/order/{{ order.id }}" target="_blank" class="btn btn-primary btn-xs">{{locale.t('view_btn')}}</a>
+                                    <a href="/cms/orders/delete/{{ order.id }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
                                 </td>
                             </tr>
                         {%endfor%}

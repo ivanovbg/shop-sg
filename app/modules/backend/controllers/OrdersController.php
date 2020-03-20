@@ -15,7 +15,15 @@ class OrdersController extends ControllerBase {
         $this->helper->breadcrumbs(['dashboard' => 'cms/dashboard', 'orders' => 'cms/orders']);
     }
 
-    public function viewAction($id){
-
+    public function deleteAction($id){
+        if ($this->helper->getAccessLevel("promotions") > $this->account->level) {
+            $this->flash->error($this->locale->t('no_access_to_this_page'));
+        } else {
+            $order = Order::findFirst($id);
+            if ($order && $order->delete()) {
+                $this->flash->success($this->locale->t('success_delete_order'));
+            }
+        }
+        $this->response->redirect($_SERVER['HTTP_REFERER']);
     }
 }

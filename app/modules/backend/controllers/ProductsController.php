@@ -27,7 +27,7 @@ class ProductsController extends ControllerBase {
                     $data['is_active'] = isset($data['is_active']) ? $data['is_active'] : 0;
                     $form->bind($data, $product);
                     if ($product->save()) {
-                        $message = $product->id ? "Продукт {$product->title} е обновен успешно" : "Продуктът е добавен успешно";
+                        $message = $product->id ? $this->locale->t('success_update_product') : $this->locale->t('success_add_product');
                         $this->flash->success($message);
                         $this->response->redirect("/cms/products");
                     }
@@ -60,7 +60,7 @@ class ProductsController extends ControllerBase {
         }else{
             $product = Product::findFirst($id);
             if($product && $product->delete()){
-                $this->flash->success('success_delete_product');
+                $this->flash->success($this->locale->t('success_delete_product'));
             }
         }
         $this->response->redirect($_SERVER['HTTP_REFERER']);

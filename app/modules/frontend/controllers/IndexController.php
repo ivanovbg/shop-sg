@@ -5,9 +5,6 @@ namespace SG\Modules\Frontend\Controllers;
 
 use Phalcon\Http\Response;
 use SG\Models\Order;
-use SG\Models\OrderProducts;
-use SG\Models\Product;
-use SG\Models\Promotion;
 
 class IndexController extends ControllerBase{
 
@@ -19,44 +16,20 @@ class IndexController extends ControllerBase{
             }else{
                 $products = str_split($products, 1);
                 $products = $this->orders->orderProducts($products);
+                $order = $this->orders->prepareOrder($products);
 
-                $order = [];
-                foreach($products as $product => $items){
-                    $productData = Product::getProductBySku($product, null, 1);
-
-                    if(!$productData){
-                        $notFoundProducts[] = $product;
-                        continue;
-                    }
-
-                    $promotion = Promotion::findOneActualProductPromotion($productData->id);
-                    $order['products'][] = array_merge(['product_id' => $productData->id], $this->orders->calculateProductOrder($productData, $items, $promotion));
+                if(empty($order)) {
+                    $this->flash->error('Съжаляваме, но няма съвпадение на продукти');
                 }
 
-
-                if(empty($order)){
-                	$this->flash->error('Съжаляваме, но няма съвпадение на продукти');
-                }
-
-                $order['total'] = $this->orders->calculateOrderTotal($order['products']);
-
-                $orderEntry = new Order();
-                $orderEntry->total_price = $order['total'];
-
-                if($orderEntry->save()){
-                    foreach($order['products'] as $key => $product){
-                        $product['order_id'] = $orderEntry->id;
-                        $orderProduct = new OrderProducts();
-                        $orderProduct->assign($product);
-                        $orderProduct->save();
-                    }
-
+                $order_id = $this->orders->saveOrder($order);
+                if($order_id !== false){
                     $response = new Response();
-                    $response->redirect("/order/".$orderEntry->id);
+                    $response->redirect("/order/".$order_id);
                     return $response->send();
+                }else{
+                    $this->flash->error('Упсс нещо се обърка! Моля, опитайте отново.');
                 }
-
-                $this->flash->error('Упсс нещо се обърка! Моля, опитайте отново.');
             }
         }
     }

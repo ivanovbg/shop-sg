@@ -14,6 +14,7 @@ $msg['submit_btn'] = 'Запази';
 $msg['add_btn'] = 'Добави';
 $msg['delete_btn'] = 'Изтрий';
 $msg['edit_btn'] = 'Редактирай';
+$msg['view_btn'] = 'Преглед';
 
 
 $msg['sign_in'] = 'Вход';
@@ -27,11 +28,21 @@ $msg['welcome'] = 'Добри дошли';
 $msg['dashboard'] = "Табло";
 $msg['administrators'] = "Администратори";
 $msg['profile'] = "Профил";
+$msg['no_access_to_this_page'] = 'Нямате достъп до тази страница';
 
 
 $msg['products'] = 'Продукти';
 $msg['orders'] = 'Поръчки';
 $msg['promotions'] = 'Промоции';
+$msg['success_delete_promotion'] = 'Успешно изтрихте промоцията';
+$msg['success_update_promotion'] = 'Успешно обновихте промоцията';
+$msg['success_add_promotion'] = 'Успешно добавихте промоция';
+$msg['success_update_product'] = 'Успешно обновихте продукта';
+$msg['success_add_product'] = 'Успешно добавихте продукт';
+$msg['success_delete_product'] = 'Успешно изтрихте продукта';
+$msg['success_delete_order'] = 'Успешно изтрихте поръчката';
+
+
 
 $msg['add'] = 'Добави';
 $msg['add_product'] = 'Добавяне на продукт';

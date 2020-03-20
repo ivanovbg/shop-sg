@@ -37,7 +37,7 @@ class PromotionsController extends ControllerBase
                 $form->bind($data, $promotion);
 
                 if ($promotion->save()) {
-                    $message = $promotion->id ? "Промоцията е обновена успешно" : "Промоцията е добавена успешно";
+                    $message = $promotion->id ? $this->locale->t('success_update_promotion') : $this->locale->t("success_add_promotion");
                     $this->flash->success($message);
                     $this->response->redirect("/cms/promotions");
                 }
@@ -70,7 +70,7 @@ class PromotionsController extends ControllerBase
         } else {
             $product = Promotion::findFirst($id);
             if ($product && $product->delete()) {
-                $this->flash->success('success_delete_promotion');
+                $this->flash->success($this->locale->t('success_delete_promotion'));
             }
         }
         $this->response->redirect($_SERVER['HTTP_REFERER']);
