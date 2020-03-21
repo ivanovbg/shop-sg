@@ -17,7 +17,13 @@ class Volt{
     }
 
     public static function price($price){
-        return number_format((float)$price, 2, '.', '').'лв.';
+        $currency = Di::getDefault()->getConfig()->settings->currency;
+        $position = DI::getDefault()->getConfig()->settings->currency_position;
+        if($position == "before"){
+            return $currency.number_format((float)$price, 2, '.', '');
+        }else{
+            return number_format((float)$price, 2, '.', '').$currency;
+        }
     }
 
 

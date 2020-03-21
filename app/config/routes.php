@@ -2,7 +2,8 @@
 $router = $di->getRouter();
 
 $router->add("/404", ['controller' => 'index', 'action' => 'test']); //404 page router
-$router->add("/order/:params", ['controller' => 'index', 'action' => 'order', 'params' => 1])->setName('order');
+$router->add("/order/{order}", ['controller' => 'index', 'action' => 'order'])->setName('order');
+$router->add("/change-language/{language}", ['controller' => 'index', 'action' => 'changeLocale'])->setName('change-language');
 
 foreach ($application->getModules() as $key => $module) {
     $namespace = preg_replace('/Module$/', 'Controllers', $module['className']);

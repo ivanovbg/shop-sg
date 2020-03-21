@@ -57,4 +57,14 @@ class Helper{
         if(array_key_exists($key, $menuItems)) return $menuItems[$key]['access_level'];
         return 0;
     }
+
+    public function languageSwitch(){
+        $languages = Di::getDefault()->getConfig()->languages->list->toArray();
+        $cookies = Di::getDefault()->get('cookies');
+        $current_language = Di::getDefault()->get('cookies')->has('_locale') ? Di::getDefault()->get('cookies')->get('_locale')->getValue() : Di::getDefault()->getConfig()->languages->default;
+        $languages = array_diff($languages, [$current_language]);
+
+        $view = Di::getDefault()->get("view");
+        $view->languages = $languages;
+    }
 }

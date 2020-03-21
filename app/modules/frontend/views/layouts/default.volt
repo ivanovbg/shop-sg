@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="container">
+    {% include 'parts/language_switch.volt' %}
     {% block content %}
     {% endblock %}
 </div>

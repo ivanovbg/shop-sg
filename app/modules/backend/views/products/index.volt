@@ -28,8 +28,8 @@
                                 <td width="50%">{{product.title}}</td>
                                 <td>{{product.price|price}}</td>
                                 <td>
-                                    <a href="/cms/products/edit/{{ product.id }}" class="btn btn-primary btn-xs">{{locale.t('edit_btn')}}</a>
-                                    <a href="/cms/products/delete/{{ product.id }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
+                                    <a href="{{ url('/cms/products/edit/' ~ product.id) }}" class="btn btn-primary btn-xs">{{locale.t('edit_btn')}}</a>
+                                    <a href="{{ url('/cms/products/delete/' ~ product.id) }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
                                 </td>
                             </tr>
                         {%endfor%}

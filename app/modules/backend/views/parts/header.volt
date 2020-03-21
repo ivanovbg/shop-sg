@@ -34,7 +34,7 @@
                         <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-4 text-center">
-{#                                    <a href="{{ path('change_language', {'lang': language_code}) }}">{{language_name}}</a>#}
+                                    {% include 'parts/language_switch.volt' %}
                                 </div>
                             </div>
                             <!-- /.row -->

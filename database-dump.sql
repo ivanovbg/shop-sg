@@ -40,9 +40,9 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `total_price` float NOT NULL,
   `date_created` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Dumping data for table sg.orders: ~94 rows (approximately)
+-- Dumping data for table sg.orders: ~0 rows (approximately)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 
@@ -53,10 +53,10 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   `product_id` int(11) NOT NULL,
   `promotion_id` int(11) DEFAULT NULL,
   `promotion_products` int(11) NOT NULL DEFAULT 0,
-  `promotion_price` int(11) NOT NULL DEFAULT 0,
+  `promotion_price` float NOT NULL DEFAULT 0,
   `products_with_promotion` int(11) NOT NULL DEFAULT 0,
   `products_without_promotion` int(11) NOT NULL DEFAULT 0,
-  `product_regular_price` int(11) NOT NULL DEFAULT 0,
+  `product_regular_price` float NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `FK_orders_products_orders` (`order_id`),
   KEY `FK_orders_products_products` (`product_id`),
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `orders_products` (
   CONSTRAINT `FK_orders_products_orders` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `FK_orders_products_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_orders_products_promotions` FOREIGN KEY (`promotion_id`) REFERENCES `promotions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- Dumping data for table sg.orders_products: ~0 rows (approximately)
 /*!40000 ALTER TABLE `orders_products` DISABLE KEYS */;
@@ -85,10 +85,10 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Dumping data for table sg.products: ~4 rows (approximately)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `sku`, `title`, `description`, `price`, `is_active`) VALUES
-	(8, 'A', 'Product A', 'bas', 50, 1),
-	(9, 'B', 'Product B', 'Product B', 30, 1),
-	(10, 'C', 'Product C', 'Product C', 20, 1),
-	(11, 'D', 'Product D', 'Product D', 10, 1);
+	(8, 'A', 'Product A', 'bas', 0.5, 1),
+	(9, 'B', 'Product B', 'Product B', 0.3, 1),
+	(10, 'C', 'Product C', 'Product C', 0.2, 1),
+	(11, 'D', 'Product D', 'Product D', 0.1, 1);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 -- Dumping structure for table sg.promotions
@@ -108,8 +108,8 @@ CREATE TABLE IF NOT EXISTS `promotions` (
 -- Dumping data for table sg.promotions: ~2 rows (approximately)
 /*!40000 ALTER TABLE `promotions` DISABLE KEYS */;
 INSERT INTO `promotions` (`id`, `product_id`, `products`, `price`, `valid_from`, `valid_to`, `is_active`) VALUES
-	(12, 8, 3, 130, '2020-03-01', '2020-03-31', 1),
-	(13, 9, 2, 45, '2020-03-01', '2020-03-31', 1);
+	(12, 8, 3, 1.3, '2020-03-01', '2020-03-31', 1),
+	(13, 9, 2, 0.45, '2020-03-01', '2020-03-31', 1);
 /*!40000 ALTER TABLE `promotions` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

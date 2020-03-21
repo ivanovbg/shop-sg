@@ -25,8 +25,8 @@
                                 <td>{{ order.date_created }}</td>
                                 <td>{{ order.total_price|price }}</td>
                                 <td>
-                                    <a href="/order/{{ order.id }}" target="_blank" class="btn btn-primary btn-xs">{{locale.t('view_btn')}}</a>
-                                    <a href="/cms/orders/delete/{{ order.id }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
+                                    <a href="{{ url(['for': 'order', 'order': order.id]) }}" target="_blank" class="btn btn-primary btn-xs">{{locale.t('view_btn')}}</a>
+                                    <a href="{{ url('/cms/orders/delete/' ~ order.id) }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
                                 </td>
                             </tr>
                         {%endfor%}

@@ -27,11 +27,11 @@
                                 <td>{{promotion.id}}</td>
                                 <td width="250px">{{promotion.product.title}} [{{ promotion.product.sku }}]</td>
                                 <td>{{promotion.products}}</td>
-                                <td>{{promotion.price}}</td>
+                                <td>{{promotion.price|price}}</td>
                                 <td>{{ (promotion.price/promotion.products)|price }} [{{ promotion.product.price|price }}]</td>
                                 <td>
-                                    <a href="/cms/promotions/edit/{{ promotion.id }}" class="btn btn-primary btn-xs">{{locale.t('edit_btn')}}</a>
-                                    <a href="/cms/promotions/delete/{{ promotion.id }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
+                                    <a href="{{ url('/cms/promotions/edit/' ~ promotion.id) }}" class="btn btn-primary btn-xs">{{locale.t('edit_btn')}}</a>
+                                    <a href="{{ url('/cms/promotions/delete/' ~ promotion.id) }}" class="btn btn-danger btn-xs">{{locale.t('delete_btn')}}</a>
                                 </td>
                             </tr>
                         {%endfor%}

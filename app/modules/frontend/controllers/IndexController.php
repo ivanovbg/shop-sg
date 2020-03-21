@@ -39,5 +39,16 @@ class IndexController extends ControllerBase{
         if(!$order) $this->response->redirect("/");
         $this->view->order = $order;
     }
+
+    public function changeLocaleAction($language){
+        $selected_language = mb_strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', $language));
+        $languages_config = $this->getDI()->get('config')->languages;
+
+        $selected_language = in_array($selected_language, $languages_config->get('list')->toArray()) ? $selected_language : $languages_config->get('default');
+
+
+        $this->cookies->set('_locale', $selected_language, time() + ((365*24)*60)*60, '/')->send();
+        $this->response->redirect($_SERVER['HTTP_REFERER']);
+    }
 }
 

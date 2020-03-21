@@ -12,6 +12,7 @@ class GlobalController extends Controller {
 
     function onConstruct(){
         $this->isAjax = $this->request->isAjax();
+        $this->helper->languageSwitch();
     }
 
 }

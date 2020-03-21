@@ -39,7 +39,9 @@ return new \Phalcon\Config([
         'domain' => 'http://sg.localhost',
         'webname' => 'SG - Online shop',
         'assets' => ['cms' => 'assets/cms', 'frontend' => 'assets/site'],
-        'default_language' => 'bulgarian'
+        'default_language' => 'bulgarian',
+        'currency' => '$',
+        'currency_position' => 'before'
     ],
     'cache' => [
         'server' => '127.0.0.1',
