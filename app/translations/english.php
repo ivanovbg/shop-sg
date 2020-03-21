@@ -67,3 +67,6 @@ $msg['view'] = 'View';
 $msg['valid_from'] = 'Valid from';
 $msg['valid_to'] = 'Valid to';
 $msg['is_active'] = 'Active?';
+$msg['no_have_products'] = 'You have not entered any products';
+$msg['no_match_products'] = 'Sorry, no products matching';
+$msg['something_wrong'] = 'Oops, something went wrong! Please, try again.';

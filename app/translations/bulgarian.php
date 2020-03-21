@@ -65,3 +65,6 @@ $msg['valid_from'] = 'Валидна от';
 $msg['valid_to'] = 'Валидна до';
 $msg['is_active'] = 'Активно?';
 $msg['description'] = 'Описание';
+$msg['no_have_products'] = 'Не сте въвели продукт';
+$msg['no_match_products'] = 'Съжаляваме, но няма съвпадените на продукт';
+$msg['something_wrong'] = 'Упс, нещо се обърка. Моля, опитайте отново!';

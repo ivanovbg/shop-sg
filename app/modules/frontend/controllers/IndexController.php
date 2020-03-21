@@ -12,14 +12,14 @@ class IndexController extends ControllerBase{
         if($this->request->isPost()){
             $products = $this->orders->prepareProductString($this->request->getPost('products'));
             if(!$products){
-                $this->flash->error('Не сте въвели продукти');
+                $this->flash->error($this->locale->t('no_have_products'));
             }else{
                 $products = str_split($products, 1);
                 $products = $this->orders->orderProducts($products);
                 $order = $this->orders->prepareOrder($products);
 
                 if(empty($order)) {
-                    $this->flash->error('Съжаляваме, но няма съвпадение на продукти');
+                    $this->flash->error($this->locale->t('no_match_products'));
                 }
 
                 $order_id = $this->orders->saveOrder($order);
@@ -28,7 +28,7 @@ class IndexController extends ControllerBase{
                     $response->redirect("/order/".$order_id);
                     return $response->send();
                 }else{
-                    $this->flash->error('Упсс нещо се обърка! Моля, опитайте отново.');
+                    $this->flash->error($this->locale->t('something_wrong'));
                 }
             }
         }
