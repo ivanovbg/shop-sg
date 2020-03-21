@@ -7,7 +7,7 @@ use SG\Modules\Backend\Forms\ProductForm;
 class ProductsController extends ControllerBase {
 
     public function indexAction(){
-        $products = Product::find(['is_active' => 1]);
+        $products = Product::find();
         $this->view->products = $products;
         $this->helper->menu('products');
         $this->helper->breadcrumbs(['dashboard' => 'cms/dashboard', 'products' => 'cms/products']);
