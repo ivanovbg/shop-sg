@@ -37,7 +37,7 @@ class PromotionsController extends ControllerBase
                 $form->bind($data, $promotion);
 
                 if ($promotion->save()) {
-                    $message = $promotion->id ? $this->locale->t('success_update_promotion') : $this->locale->t("success_add_promotion");
+                    $message = isset($promotion->id) ? $this->locale->t('success_update_promotion') : $this->locale->t("success_add_promotion");
                     $this->flash->success($message);
                     $this->response->redirect("/cms/promotions");
                 }
@@ -47,7 +47,7 @@ class PromotionsController extends ControllerBase
         $this->view->form = $form;
         $this->helper->menu("promotions");
 
-        if ($promotion->id) {
+        if (isset($promotion->id)) {
             $this->helper->breadcrumbs(['dashboard' => '/cms/dashboard', 'promotions' => 'cms/promotions', 'edit_promotion' => 'cms/promotions/edit']);
         } else {
             $this->helper->breadcrumbs(['dashboard' => 'cms/dashboard', 'promotions' => 'cms/promotions', 'add_promotion' => 'cms/promotions/add']);

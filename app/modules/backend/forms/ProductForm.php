@@ -3,7 +3,6 @@ namespace SG\Modules\Backend\Forms;
 
 use Phalcon\Forms\Element\Check;
 use Phalcon\Forms\Element\Numeric;
-use Phalcon\Forms\Element\Submit;
 use Phalcon\Forms\Element\Text;
 use Phalcon\Forms\Element\TextArea;
 use Phalcon\Forms\Form;

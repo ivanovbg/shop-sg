@@ -21,13 +21,13 @@ class ProductsController extends ControllerBase {
             $data = $this->request->getPost();
             if($form->isValid($data)){
 
-                $check_sku = Product::getProductBySku($data['sku'], $product->id);
+                $check_sku = Product::getProductBySku($data['sku'], isset($product->id) ? $product->id : null);
 
                 if(!$check_sku) {
                     $data['is_active'] = isset($data['is_active']) ? $data['is_active'] : 0;
                     $form->bind($data, $product);
                     if ($product->save()) {
-                        $message = $product->id ? $this->locale->t('success_update_product') : $this->locale->t('success_add_product');
+                        $message = isset($product->id) ? $this->locale->t('success_update_product') : $this->locale->t('success_add_product');
                         $this->flash->success($message);
                         $this->response->redirect("/cms/products");
                     }
@@ -40,10 +40,10 @@ class ProductsController extends ControllerBase {
 
         $this->view->form = $form;
         $this->helper->menu('products');
-        if(!$product){
-            $this->helper->breadcrumbs(['dashboard' => 'cms/dashboard', 'products' => 'cms/products', "add_product" => 'cms/products/add']);
-        }else{
+        if(isset($product->id)){
             $this->helper->breadcrumbs(['dashboard' => 'cms/dashboard', 'products' => 'cms/products', "edit_product" => 'cms/products/edit/'.$product->id]);
+        }else{
+            $this->helper->breadcrumbs(['dashboard' => 'cms/dashboard', 'products' => 'cms/products', "add_product" => 'cms/products/add']);
         }
     }
 
